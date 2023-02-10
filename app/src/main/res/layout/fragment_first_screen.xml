@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background"
+    tools:context=".ui.fragment.firstscreen.FirstScreen">
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/imageViewIcon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:src="@drawable/image" />
+
+    <Button
+        android:id="@+id/btnEnter"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/btnSignUp"
+        android:layout_marginHorizontal="16dp"
+        android:background="@drawable/button_border"
+        android:fontFamily="@font/montserrat_light"
+        android:padding="16dp"
+        android:text="@string/entering"
+        />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnSignUp"
+        style="@style/Violet.Button"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="77dp"
+        android:padding="16dp"
+        android:text="@string/sign_up" />
+
+
+</RelativeLayout>

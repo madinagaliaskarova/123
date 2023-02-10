@@ -1,0 +1,45 @@
+<resources>
+    <string name="app_name">Manga</string>
+    <string name="save">сохранить</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="sign_up">Регистрация</string>
+    <string name="entering">Войти</string>
+    <string name="home">Главная</string>
+    <string name="profile">Профиль</string>
+    <string name="enter">вход</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="haveAccount">У вас еще нет аккаунта?</string>
+    <string name="addPhoto">Добавить фото</string>
+    <string name="nickname">Nickname</string>
+    <string name="confirm_password">Confirm password</string>
+    <string name="description">Название аниме оно может</string>
+    <string name="_2002">Год:2002</string>
+    <string name="placeholder">Placeholder</string>
+    <string name="description_detailed">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="tab_text_1">Tab 1</string>
+    <string name="tab_text_2">Tab 2</string>
+
+
+    <string name="app_name1">Manabu-GT Expandable Text View </string>
+    <string name="expandable_text">We Sanchhaya Education Pvt. Ltd., are registered and headquartered
+        at BC 227, 2nd Floor, Matrix Business Tower, B4, Sector 132, Noida, UP-201301, hereinafter
+        referred to as GeeksforGeeks. We also offer paid Courses managed by Sanchhaya Classes Pvt. Ltd.
+        with registered office address B-142, Vishwash Park, Uttam Nagar, New Delhi, North Delhi, Delhi, India, 110059.
+        At GeeksforGeeks, we value your trust and  respect your privacy. This privacy statement (“Privacy Statement”)
+        applies to the treatment of personally identifiable information submitted by, or otherwise obtained from,
+        you in connection with the associated application (“Application”). The Application is
+        provided by GeeksforGeeks (and may be provided by Geeksforgeeks on behalf
+        of a GeeksforGeeks licensor or partner (“Application Partner”).
+        By using or otherwise accessing the Application, you acknowledge that you accept the practices
+        and policies outlined in this Privacy Statement.</string>
+    <string name="synopsis">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</string>
+    <string name="synopsis_tool">Синопсис</string>
+    <string name="genre">Жанр:</string>
+    <string name="type">Тип:</string>
+    <string name="nameManga">Название Манги</string>
+
+
+</resources>

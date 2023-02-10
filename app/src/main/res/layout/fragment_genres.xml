@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.fragment.genres.GenresFragment">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/manga_name"
+                style="@style/Base.Heading"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_gravity="start"
+                android:layout_marginTop="8dp"
+                android:text="Жанры"
+                android:textSize="18sp" />
+
+            <Button
+                android:layout_width="12dp"
+                android:layout_height="12dp"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="40dp"
+                android:paddingTop="20dp"
+                android:background="@drawable/cross"
+                />
+
+
+
+        </RelativeLayout>
+
+    </androidx.appcompat.widget.Toolbar>
+
+
+
+    <Button
+        android:id="@+id/btnGreen"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/toolbar"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/green_border"
+        android:scaleType="center"
+        />
+
+    <Button
+        android:id="@+id/btnEnter"
+        android:layout_width="130dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/btnGreen"
+        android:layout_marginHorizontal="16dp"
+        android:background="@drawable/button_border"
+        android:fontFamily="@font/montserrat_light"
+        android:text="Сбросить"
+        style="@style/Base.TextViolet"
+        />
+    <TextView
+        android:id="@+id/btnReset"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="-"
+        android:layout_toRightOf="@id/btnEnter"
+        android:layout_below="@id/btnGreen"
+        android:layout_marginTop="11dp"
+        android:textColor="@color/black"
+        />
+
+    <TextView
+        android:id="@+id/tireSecond"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="-"
+        android:layout_toRightOf="@id/btnReset"
+        android:layout_marginTop="11dp"
+        android:textColor="@color/black"
+        android:layout_below="@id/btnGreen"
+        />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnApply"
+        style="@style/Violet.Button"
+        android:layout_width="130dp"
+        android:layout_height="60dp"
+        android:layout_below="@id/btnGreen"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="0dp"
+        android:layout_toRightOf="@id/tireSecond"
+        android:text="Применить" />
+
+</RelativeLayout>

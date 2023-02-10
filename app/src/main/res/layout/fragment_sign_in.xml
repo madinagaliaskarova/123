@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.fragment.tablayoutenter.signin.SignInFragment"
+    android:layout_marginHorizontal="16dp">
+
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tvEnter"
+        style="@style/Base.TextBlack"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="@string/enter" />
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/etUserName"
+        style="@style/Base.TextGray"
+        android:layout_below="@+id/tvEnter"
+        android:background="@drawable/edittext"
+        android:padding="10dp"
+        android:text="@string/username"
+        android:layout_marginTop="16dp"/>
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/etPassword"
+        style="@style/Base.TextGray"
+        android:layout_below="@+id/etUserName"
+        android:background="@drawable/edittext"
+        android:padding="10dp"
+        android:text="@string/password" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnEnter"
+        style="@style/Violet.Button"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="68dp"
+        android:padding="16dp"
+        android:text="@string/enter" />
+
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tvHaveAccount"
+        style="@style/Base.BottomTextView"
+        android:text="@string/haveAccount"
+        android:textSize="13sp" />
+
+    <Button
+        style="@style/Base.BottomButton"
+        android:id="@+id/btn_registration"
+        android:layout_alignParentBottom="true"
+        android:text="@string/sign_up"
+        android:background="?android:attr/selectableItemBackground"
+        android:layout_marginStart="80dp"
+
+    />
+
+
+</RelativeLayout>
