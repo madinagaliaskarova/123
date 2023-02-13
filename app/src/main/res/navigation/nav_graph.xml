@@ -4,23 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
     tools:ignore="InvalidNavigation"
-    app:startDestination="@id/detailedMangaFragment">
-
-    <fragment
-        android:id="@+id/firstScreen"
-        android:name="com.example.manga.ui.fragment.firstscreen.FirstScreen"
-        android:label="fragment_first_screen"
-        tools:layout="@layout/fragment_first_screen" >
-        <action
-            android:id="@+id/action_firstScreen_to_tabLayoutFragment"
-            app:destination="@id/tabLayoutFragment" />
-    </fragment>
-
-    <fragment
-        android:id="@+id/signInFragment"
-        android:name="com.example.manga.ui.fragment.tablayoutenter.signin.SignInFragment"
-        android:label="fragment_sign_in"
-        tools:layout="@layout/fragment_sign_in" />
+    app:startDestination="@id/mainFragment">
 
     <fragment
         android:id="@+id/mangaFragment"
@@ -33,38 +17,16 @@
     </fragment>
 
     <fragment
-        android:id="@+id/signUpFragment"
-        android:name="com.example.manga.ui.fragment.tablayoutenter.signup.SignUpFragment"
-        android:label="fragment_sign_up"
-        tools:layout="@layout/fragment_sign_up" >
-    </fragment>
-
-    <fragment
         android:id="@+id/mainFragment"
         android:name="com.example.manga.ui.fragment.tablayoutmanga.MainFragment"
         android:label="fragment_main"
         tools:layout="@layout/fragment_main" />
-    <fragment
-        android:id="@+id/filtersFragment"
-        android:name="com.example.manga.ui.fragment.filters.FiltersFragment"
-        android:label="fragment_filters"
-        tools:layout="@layout/fragment_filters" />
-    <fragment
-        android:id="@+id/genresFragment"
-        android:name="com.example.manga.ui.fragment.genres.GenresFragment"
-        android:label="fragment_genres"
-        tools:layout="@layout/fragment_genres" />
 
-    <fragment
-        android:id="@+id/tabLayoutFragment"
-        android:name="com.example.manga.ui.fragment.tablayoutenter.TabLayoutFragment"
-        android:label="fragment_tab_layout"
-        tools:layout="@layout/fragment_tab_layout" />
-    <activity
-        android:id="@+id/splashActivity"
-        android:name="com.example.manga.ui.activity.SplashActivity"
-        android:label="activity_splash"
-        tools:layout="@layout/activity_splash"/>
+<!--    <activity-->
+<!--        android:id="@+id/splashActivity"-->
+<!--        android:name="com.example.manga.ui.activity.SplashActivity"-->
+<!--        android:label="activity_splash"-->
+<!--        tools:layout="@layout/activity_splash"/>-->
     <activity
         android:id="@+id/mainActivity"
         android:name="com.example.manga.ui.activity.MainActivity"
@@ -75,5 +37,10 @@
         android:name="com.example.manga.ui.fragment.detailedmanga.DetailedMangaFragment"
         android:label="fragment_detailed_manga2"
         tools:layout="@layout/fragment_detailed_manga2" />
+    <fragment
+        android:id="@+id/topMangaFragment"
+        android:name="com.example.manga.ui.fragment.tablayoutmanga.topmanga.TopMangaFragment"
+        android:label="fragment_top_manga"
+        tools:layout="@layout/fragment_top_manga" />
 
 </navigation>

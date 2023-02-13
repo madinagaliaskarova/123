@@ -8,19 +8,18 @@ import com.example.manga.data.remotedb.ApiService
 import kotlinx.coroutines.Dispatchers
 
 open class MangaDetailedRepository(private val apiService: ApiService) {
+    
 
-    fun detailedMangaPage(): LiveData<Resource<MangaDetailedModel>> {
-        return detailedManga()
-    }
-
-    fun detailedManga(): LiveData<Resource<MangaDetailedModel>> {
+    fun idManga(id: Int): LiveData<Resource<MangaDetailedModel>> {
         return liveData(Dispatchers.IO) {
             val response =
-                apiService.listMangaDetailed()
+                apiService.idManga(id)
             emit(
                 if (response.isSuccessful) Resource.success(response.body()) else Resource.error(
                     response.message(), response.body(), response.code()
+
                 )
+
             )
         }
     }

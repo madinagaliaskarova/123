@@ -33,7 +33,6 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/tvYear"
                 android:layout_width="match_parent"

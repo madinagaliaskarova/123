@@ -1,106 +1,49 @@
 package com.example.manga.ui.fragment.tablayoutmanga.manga
 
 import android.content.Context
+import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.paging.PagingDataAdapter
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.manga.data.model.MangaModel
 import com.example.manga.databinding.ItemMangaBinding
 
-
-class MangaAdapter(context: Context) : PagingDataAdapter<MangaModel, MangaAdapter.MangaViewHolder>() {
+class MangaAdapter(private val context: Context, private val onClick: ((MangaModel) -> Unit)?) : PagingDataAdapter<MangaModel, MangaAdapter.MangaViewHolder>(MangaDiffCallback()) {
 
     override fun onBindViewHolder(holder: MangaViewHolder, position: Int) {
-        return MangaViewHolder()
+        holder.bind(getItem(position))
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MangaViewHolder {
-        TODO("Not yet implemented")
+        val layoutInflater = LayoutInflater.from(parent.context)
+        val binding = ItemMangaBinding.inflate(layoutInflater, parent, false)
+        return MangaViewHolder(binding)
     }
 
-    class MangaViewHolder(private val binding: ItemMangaBinding) {
-
-    }
-
-
-}
-
-        class MangaViewHolder() :
-        RecyclerView.ViewHolder(binding.root) {
-        fun bind(mangaModel: MangaModel) {
-            Glide.with(binding.imageManga).load(mangaModel.image).into(binding.imageManga)
-            binding.tvDescription.text = mangaModel.description
-            binding.tvYear.text = mangaModel.issue_year.toString()
-            itemView.setOnClickListener {
-                onclick?.invoke(mangaModel)
+    inner class MangaViewHolder(private val binding: ItemMangaBinding) : RecyclerView.ViewHolder(binding.root) {
+        fun bind(manga: MangaModel?) {
+            if (manga == null)
+                return;
+            manga.let {
+                Glide.with(binding.imageManga).load(it.image).into(binding.imageManga)
+                binding.tvDescription.text = it.description
+                binding.tvYear.text = it.issue_year.toString()
+                itemView.setOnClickListener {
+                    onClick?.invoke(manga)
+                }
             }
         }
-
-
-
+    }
 }
 
+class MangaDiffCallback : DiffUtil.ItemCallback<MangaModel>() {
+    override fun areItemsTheSame(oldItem: MangaModel, newItem: MangaModel): Boolean {
+        return oldItem.id == newItem.id
+    }
 
-
-//class MangaAdapter(context: Context) :
-//    PagingDataAdapter<MangaModel, MangaAdapter.ViewHolder>() {
-//
-//    private val data = mutableListOf<MangaModel>()
-//    var onclick: ((MangaModel) -> Unit)? = null
-//
-//
-//    fun setData(page: MangaModelPage) {
-//        data.addAll(page.results)
-//        notifyDataSetChanged()
-//    }
-//
-//
-//    private object MangaModelItemCallback : DiffUtil.ItemCallback<MangaModel>() {
-//        override fun areItemsTheSame(oldItem: MangaModel, newItem: MangaModel): Boolean {
-//            return oldItem == newItem
-//        }
-//
-//        override fun areContentsTheSame(oldItem: MangaModel, newItem: MangaModel): Boolean {
-//            return oldItem.description == newItem.description && oldItem.image == newItem.image
-//        }
-//
-//    }
-//
-//    inner class ViewHolder(private val binding: ItemMangaBinding) :
-//        RecyclerView.ViewHolder(binding.root) {
-//        fun bind(mangaModel: MangaModel) {
-//            Glide.with(binding.imageManga).load(mangaModel.image).into(binding.imageManga)
-//            binding.tvDescription.text = mangaModel.description
-//            binding.tvYear.text = mangaModel.issue_year.toString()
-//            itemView.setOnClickListener {
-//                onclick?.invoke(mangaModel)
-//            }
-//        }
-//
-//
-//    }
-//
-
-//    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-//        return ViewHolder(
-//            ItemMangaBinding.inflate(
-//                LayoutInflater.from(parent.context),
-//                parent,
-//                false
-//            )
-//        )
-//    }
-//
-//    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-//        holder.bind(data[position])
-//    }
-//
-//
-//    override fun getItemCount(): Int = data.size
-//
-//
-//    }
-
-
-
+    override fun areContentsTheSame(oldItem: MangaModel, newItem: MangaModel): Boolean {
+        return oldItem == newItem
+    }
+}

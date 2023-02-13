@@ -1,14 +1,9 @@
 package com.example.manga.data.repository
 
-import android.app.SearchManager.QUERY
-import android.graphics.pdf.PdfDocument.Page
-import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.liveData
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
-import androidx.paging.PagingData
-import androidx.paging.PagingSource
 import com.example.manga.data.common.EverythingNewsPageSource
 import com.example.manga.data.common.Resource
 import com.example.manga.data.model.MangaDetailedModel
@@ -16,30 +11,20 @@ import com.example.manga.data.model.MangaModel
 import com.example.manga.data.model.MangaModelPage
 import com.example.manga.data.remotedb.ApiService
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.flow.*
-import retrofit2.http.Query
-import java.security.Key
 
 
 open class Repository
-    (private val apiService: ApiService,
-     val everythingNewsPageSource: EverythingNewsPageSource
-                      ) {
+    (
+    private val apiService: ApiService,
+    val everythingNewsPageSource: EverythingNewsPageSource
+) {
 
-
-    fun listManga(): PagingSource<Int, MangaModel> {
-        everythingNewsPageSource.load()
-    }
 
     fun listMangaPaging(query: String): Pager<Int, MangaModel> {
-        return Pager(PagingConfig(pageSize = 10)){
+        return Pager(PagingConfig(pageSize = 10)) {
             EverythingNewsPageSource(apiService, query)
         }
     }
-
-//    fun queryAll(query: String): PagingSource<Int, MangaModel> {
-//        return everythingNewsPageSource.
-//    }
 
     fun listManga(): LiveData<Resource<MangaModelPage>> {
         return liveData(Dispatchers.IO) {
@@ -52,18 +37,10 @@ open class Repository
             )
         }
     }
-    fun idManga(id:Int): LiveData<Resource<MangaDetailedModel>> {
-        return liveData(Dispatchers.IO) {
-            val response =
-                apiService.idManga(id)
-            emit(
-                if (response.isSuccessful) Resource.success(response.body()) else Resource.error(
-                    response.message(), response.body(), response.code()
-                )
-            )
-        }
-    }
-    fun SearchManga(search:String): LiveData<Resource<MangaModel>> {
+
+
+
+    fun SearchManga(search: String): LiveData<Resource<MangaModel>> {
         return liveData(Dispatchers.IO) {
             val response =
                 apiService.getAllMangaSearch(search)
@@ -84,7 +61,6 @@ open class Repository
 //    }.flow.stateIn(viewModelScope, SharingStarted.Lazily, PagingData.empty())
 
 }
-
 
 
 //    fun createNewUser(user : SignUpModel): MutableLiveData<SignUpResponse> {

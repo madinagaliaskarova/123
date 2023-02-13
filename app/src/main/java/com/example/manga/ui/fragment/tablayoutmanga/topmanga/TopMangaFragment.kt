@@ -1,20 +1,19 @@
 package com.example.manga.ui.fragment.tablayoutmanga.topmanga
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
-import androidx.lifecycle.ViewModelProvider
-import by.kirich1409.viewbindingdelegate.viewBinding
+import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import com.example.manga.R
-import com.example.manga.data.common.Status
-import com.example.manga.databinding.FragmentMangaBinding
 import com.example.manga.databinding.FragmentTopMangaBinding
 import com.example.manga.ui.BaseFragment
-import com.example.manga.ui.fragment.tablayoutmanga.manga.MangaAdapter
 import com.example.manga.ui.fragment.tablayoutmanga.manga.MangaViewModel
+import com.google.android.material.tabs.TabLayoutMediator
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.launch
+import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 
 class TopMangaFragment : BaseFragment<FragmentTopMangaBinding>() {
 
@@ -23,29 +22,30 @@ class TopMangaFragment : BaseFragment<FragmentTopMangaBinding>() {
         return FragmentTopMangaBinding.inflate(layoutInflater)
     }
 
-    private val MangaAdapter = MangaAdapter()
+    private var mangaTopAdapter = MangaTopAdapter(requireContext(), onClick = {
+        val bundle = Bundle()
+        bundle.putInt("key", it.id)
+        findNavController().navigate(R.id.detailedMangaFragment, bundle)
+    });
 
-//    val viewModel: MangaViewModel by viewModel()
-    val viewModel: MangaTopViewModel by lazy {
-    ViewModelProvider(requireActivity())[MangaTopViewModel::class.java]
-}
+    private val viewModel: MangaViewModel by sharedViewModel()
 
     override fun initView() = with(binding) {
-        recyclerView.adapter = MangaAdapter
+        recyclerView.adapter = mangaTopAdapter
     }
+
     override fun initViewModel() {
-        viewModel.listManga().observe(requireActivity()) {
-            when (it.status) {
-                Status.SUCCESS -> {
-                    it.data?.let { it1 -> MangaAdapter.setData(it1) }
-                }
-                Status.ERROR -> {
-                    Toast.makeText(requireActivity(), it.message, Toast.LENGTH_LONG).show()
-                }
+        lifecycleScope.launch {
+            viewModel.listMangas.collectLatest { pagingData ->
+                mangaTopAdapter.submitData(lifecycle, pagingData)
             }
         }
     }
-
-
 }
+
+
+
+
+
+
 
